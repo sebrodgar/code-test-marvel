@@ -1,0 +1,21 @@
+ext {
+    //App version
+    version_major = 1
+    version_minor = 0
+    version_patch = 0
+    //@version_build only modify the version code, no the version name
+    //It is use for release candidate updates in release branch
+    version_build = 0
+
+    project_config = [
+            applicationId       : "com.srg.pruebamarvel",
+            min_sdk             : 21,
+            target_sdk          : 30,
+            compile_sdk         : 30,
+            vector_support      : true,
+            multidex            : true,
+            android_junit_runner: "com.srg.pruebamarvel.DextOpenerAndroidJUnitRunner",
+            version_name        : "$version_major.$version_minor.$version_patch",
+            version_code        : version_major * 1000000 + version_minor * 10000 + version_patch * 100 + version_build
+    ]
+}
