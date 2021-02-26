@@ -1,10 +1,10 @@
 package com.srg.pruebamarvel
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.srg.pruebamarvel.common.base.BaseActivity
 import com.srg.pruebamarvel.presentation.features.main.MainFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

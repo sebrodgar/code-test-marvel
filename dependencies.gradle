@@ -55,9 +55,12 @@ ext {
             androidx_constraintlayout             : "androidx.constraintlayout:constraintlayout:${libraries_versions.androidx_constraintlayout}",
             androidx_livedata_ktx                 : "androidx.lifecycle:lifecycle-livedata-ktx:${libraries_versions.androidx_lifecycle}",
             androidx_lifecycle_viewmodel_ktx      : "androidx.lifecycle:lifecycle-viewmodel-ktx:${libraries_versions.androidx_lifecycle}",
+            androidx_navigation_fragment        : "androidx.navigation:navigation-fragment-ktx:${libraries_versions.androidx_navigation}",
+
             //Square
             leakcanary                            : "com.squareup.leakcanary:leakcanary-android:${libraries_versions.leakcanary}",
             retrofit                              : "com.squareup.retrofit2:retrofit:${libraries_versions.retrofit}",
+            retrofit_gson                         : "com.squareup.retrofit2:converter-gson:${libraries_versions.retrofit}",
             okhttp                                : "com.squareup.okhttp3:okhttp:${libraries_versions.okhttp}",
 
             // Other
