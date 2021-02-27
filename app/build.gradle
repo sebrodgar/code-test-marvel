@@ -12,6 +12,8 @@ android {
         versionName project_config.version_name
         versionCode project_config.version_code
         consumerProguardFiles 'consumer-rules.pro'
+        buildConfigField "String", "API_PUBLIC_KEY", '"39e019d5b850adc63a53f0c95549fb5a"'
+        buildConfigField "String", "API_PRIVATE_KEY", '"378d94043569903f4e4c9d0cdedb605a99513a58"'
     }
 
     kotlinOptions {
@@ -53,6 +55,7 @@ dependencies {
     implementation libraries.androidx_constraintlayout
     implementation libraries.androidx_livedata_ktx
     implementation libraries.androidx_lifecycle_viewmodel_ktx
+    implementation libraries.androidx_navigation_fragment
 
     //Square
     implementation libraries.leakcanary
@@ -61,6 +64,9 @@ dependencies {
     implementation libraries.dagger_android
     implementation libraries.dagger_android_support
     kapt libraries.dagger_android_processor
+    implementation libraries.retrofit
+    implementation libraries.retrofit_gson
+    implementation libraries.okhttp
 
     //Other
     implementation libraries.gson
