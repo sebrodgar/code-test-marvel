@@ -9,7 +9,7 @@ import dagger.Provides
  * Created by sebrodgar on 26/02/2021.
  */
 @Module
-class AppModule {
+object AppModule {
 
     @Provides
     fun provideApplicationContext(application: MarvelApplication): Context =
