@@ -56,6 +56,7 @@ dependencies {
     implementation libraries.androidx_livedata_ktx
     implementation libraries.androidx_lifecycle_viewmodel_ktx
     implementation libraries.androidx_navigation_fragment
+    implementation libraries.androidx_paging
 
     //Square
     implementation libraries.leakcanary
