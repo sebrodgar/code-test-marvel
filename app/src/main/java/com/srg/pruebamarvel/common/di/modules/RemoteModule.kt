@@ -24,7 +24,7 @@ object RemoteModule {
 
     @Provides
     fun provideRetrofitService(context: Context): Retrofit = Retrofit.Builder()
-        .baseUrl("https://gateway.marvel.com:443")
+        .baseUrl("https://gateway.marvel.com:443/v1/public/")
         .client(provideOkHttpClient(context))
         .addConverterFactory(GsonConverterFactory.create())
         .build()

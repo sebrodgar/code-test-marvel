@@ -1,5 +1,9 @@
 package com.srg.pruebamarvel.common.di.modules
 
+import com.srg.pruebamarvel.common.di.annotations.DataScope
+import com.srg.pruebamarvel.data.features.characters.sources.CharactersDataSource
+import com.srg.pruebamarvel.data.features.characters.sources.CharactersRemoteDataSourceImpl
+import dagger.Binds
 import dagger.Module
 
 /**
@@ -7,4 +11,8 @@ import dagger.Module
  */
 @Module
 abstract class DataSourceModule {
+
+    @Binds
+    @DataScope
+    abstract fun bindCharactersDataSource(dataSource: CharactersRemoteDataSourceImpl): CharactersDataSource
 }

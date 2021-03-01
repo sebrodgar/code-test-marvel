@@ -1,5 +1,8 @@
 package com.srg.pruebamarvel.common.di.modules
 
+import com.srg.pruebamarvel.data.features.characters.CharactersRepositoryImpl
+import com.srg.pruebamarvel.domain.features.characters.CharactersRepository
+import dagger.Binds
 import dagger.Module
 
 /**
@@ -7,4 +10,7 @@ import dagger.Module
  */
 @Module
 abstract class RepositoriesModule {
+
+    @Binds
+    abstract fun bindCharacterRepository(repository: CharactersRepositoryImpl): CharactersRepository
 }
