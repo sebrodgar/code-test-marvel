@@ -5,5 +5,5 @@ package com.srg.pruebamarvel.common.errors
  */
 @Suppress("MemberVisibilityCanBePrivate")
 class NetworkException(
-    val code: Int, val cbCode: APIErrorCode, val cbMessage: String?
-) : RuntimeException("HTTP error code $code; cbCode: $cbCode; apiMessage: $cbMessage")
+    code: Int, marvelCode: APIErrorCode
+) : RuntimeException("HTTP error code $code; Code: $marvelCode")

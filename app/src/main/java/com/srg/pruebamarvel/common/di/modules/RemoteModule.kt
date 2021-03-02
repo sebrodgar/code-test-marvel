@@ -3,7 +3,9 @@ package com.srg.pruebamarvel.common.di.modules
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.google.gson.GsonBuilder
 import com.srg.pruebamarvel.BuildConfig
+import com.srg.pruebamarvel.common.adapters.LocalDateTimeAdapter
 import com.srg.pruebamarvel.common.extensions.toMD5
 import dagger.Module
 import dagger.Provides
@@ -11,6 +13,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
 
 /**
@@ -24,9 +27,16 @@ object RemoteModule {
 
     @Provides
     fun provideRetrofitService(context: Context): Retrofit = Retrofit.Builder()
-        .baseUrl("https://gateway.marvel.com:443/v1/public/")
+        .baseUrl("https://gateway.marvel.com:443")
         .client(provideOkHttpClient(context))
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().registerTypeAdapter(
+                    LocalDateTime::class.java,
+                    LocalDateTimeAdapter()
+                ).create()
+            )
+        )
         .build()
 
     private fun provideOkHttpClient(context: Context): OkHttpClient =

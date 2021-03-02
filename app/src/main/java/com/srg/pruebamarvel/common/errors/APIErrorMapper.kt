@@ -6,13 +6,12 @@ import com.srg.pruebamarvel.common.util.fromEnum
 /**
  * Created by sebrodgar on 01/03/2021.
  */
-inline fun <reified T> parseHttpError(httpCode: Int, httpMessage: String?, errorBody: String) =
+inline fun <reified T> parseHttpError(httpCode: Int, errorBody: String) =
     GsonBuilder().create().getAdapter(APIError::class.java).fromJson(
         errorBody
     ).run {
         NetworkException(
             httpCode,
-            fromEnum(this?.code, APIErrorCode.UNKNOWN),
-            httpMessage
+            fromEnum(this?.code, APIErrorCode.UNKNOWN)
         )
     }

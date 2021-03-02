@@ -14,6 +14,7 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
         buildConfigField "String", "API_PUBLIC_KEY", '"39e019d5b850adc63a53f0c95549fb5a"'
         buildConfigField "String", "API_PRIVATE_KEY", '"378d94043569903f4e4c9d0cdedb605a99513a58"'
+        multiDexEnabled project_config.multidex
     }
 
     kotlinOptions {
@@ -34,6 +35,8 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -41,6 +44,8 @@ android {
 }
 
 dependencies {
+    coreLibraryDesugaring libraries.android_desugaring_tools
+
     implementation libraries.kotlin
 
     //Kotlin
@@ -56,6 +61,7 @@ dependencies {
     implementation libraries.androidx_livedata_ktx
     implementation libraries.androidx_lifecycle_viewmodel_ktx
     implementation libraries.androidx_navigation_fragment
+    implementation libraries.androidx_navigation_ui
     implementation libraries.androidx_paging
 
     //Square

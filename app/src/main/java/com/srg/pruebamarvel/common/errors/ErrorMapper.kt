@@ -9,12 +9,12 @@ fun Throwable.toDomain() = when (this) {
     is HttpException -> {
         response()?.errorBody()?.string()?.run {
             try {
-                parseHttpError<APIError>(this@toDomain.code(), this@toDomain.message, this@run)
+                parseHttpError<APIError>(this@toDomain.code(), this@run)
             } catch (e: Exception) {
                 //ignore
                 RuntimeException(this)
             }
-        } ?: NetworkException(code(), APIErrorCode.UNKNOWN, message)
+        } ?: NetworkException(code(), APIErrorCode.UNKNOWN)
     }
     else -> this
 }

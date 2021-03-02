@@ -17,6 +17,8 @@ ext {
             androidx_lifecycle                : '2.3.0',
             androidx_navigation               : '2.3.0',
             androidx_paging                   : "3.0.0-beta01",
+            android_desugaring_tools          : '1.0.9',
+
 
             // Dagger
             dagger                            : '2.28.3',
@@ -57,8 +59,11 @@ ext {
             androidx_livedata_ktx                 : "androidx.lifecycle:lifecycle-livedata-ktx:${libraries_versions.androidx_lifecycle}",
             androidx_lifecycle_viewmodel_ktx      : "androidx.lifecycle:lifecycle-viewmodel-ktx:${libraries_versions.androidx_lifecycle}",
             androidx_navigation_fragment          : "androidx.navigation:navigation-fragment-ktx:${libraries_versions.androidx_navigation}",
+            androidx_navigation_ui                : "androidx.navigation:navigation-ui-ktx:${libraries_versions.androidx_navigation}",
             androidx_paging                       : "androidx.paging:paging-runtime:${libraries_versions.androidx_paging}",
             androidx_paging_common                : "androidx.paging:paging-common:${libraries_versions.androidx_paging}",
+            android_desugaring_tools              : "com.android.tools:desugar_jdk_libs:${libraries_versions.android_desugaring_tools}",
+
 
             //Square
             leakcanary                            : "com.squareup.leakcanary:leakcanary-android:${libraries_versions.leakcanary}",
