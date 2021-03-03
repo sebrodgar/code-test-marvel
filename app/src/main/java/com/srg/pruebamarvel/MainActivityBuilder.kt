@@ -1,7 +1,8 @@
 package com.srg.pruebamarvel
 
 import androidx.appcompat.app.AppCompatActivity
-import com.srg.pruebamarvel.presentation.features.main.MainFragmentBuilder
+import com.srg.pruebamarvel.presentation.features.characters.details.CharacterDetailsFragmentBuilder
+import com.srg.pruebamarvel.presentation.features.characters.list.CharacterListFragmentBuilder
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -14,7 +15,8 @@ abstract class MainActivityBuilder {
     @ContributesAndroidInjector(
         modules = [
             MainActivityModule::class,
-            MainFragmentBuilder::class
+            CharacterListFragmentBuilder::class,
+            CharacterDetailsFragmentBuilder::class
         ]
     )
     abstract fun mainActivity(): MainActivity

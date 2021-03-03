@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -63,6 +64,8 @@ dependencies {
     implementation libraries.androidx_navigation_fragment
     implementation libraries.androidx_navigation_ui
     implementation libraries.androidx_paging
+    implementation libraries.androidx_swiperefresh_layout
+    implementation libraries.androidx_lifecycle_common_java
 
     //Square
     implementation libraries.leakcanary
@@ -79,6 +82,8 @@ dependencies {
     implementation libraries.gson
     debugImplementation libraries.chucker
     releaseImplementation libraries.chucker_no_op
+    implementation libraries.glide
+
 
     //Test
     testImplementation libraries.junit
