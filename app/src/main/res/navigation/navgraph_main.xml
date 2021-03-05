@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph_main"
+    app:startDestination="@id/characterListFragment">
+
+    <fragment
+        android:id="@+id/characterListFragment"
+        android:name="com.srg.pruebamarvel.presentation.features.characters.list.CharacterListFragment"
+        tools:layout="@layout/fragment_character_list">
+        <action
+            android:id="@+id/action_characterListFragment_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment"
+            app:popUpTo="@id/characterListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.srg.pruebamarvel.presentation.features.characters.details.CharacterDetailsFragment">
+        <argument
+            android:name="characterId"
+            app:argType="long" />
+        <argument
+            android:name="characterName"
+            app:argType="string" />
+    </fragment>
+</navigation>
