@@ -18,6 +18,7 @@ ext {
             androidx_navigation               : '2.3.0',
             androidx_paging                   : "3.0.0-beta01",
             android_desugaring_tools          : '1.0.9',
+            androidx_swiperefresh_layout      : '1.1.0',
 
 
             // Dagger
@@ -31,6 +32,7 @@ ext {
             // Other
             chucker                           : '3.4.0',
             gson                              : '2.8.6',
+            glide                             : '4.12.0',
 
             //Test
             junit                             : '4.13',
@@ -58,11 +60,13 @@ ext {
             androidx_constraintlayout             : "androidx.constraintlayout:constraintlayout:${libraries_versions.androidx_constraintlayout}",
             androidx_livedata_ktx                 : "androidx.lifecycle:lifecycle-livedata-ktx:${libraries_versions.androidx_lifecycle}",
             androidx_lifecycle_viewmodel_ktx      : "androidx.lifecycle:lifecycle-viewmodel-ktx:${libraries_versions.androidx_lifecycle}",
+            androidx_lifecycle_common_java        : "androidx.lifecycle:lifecycle-common-java8:${libraries_versions.androidx_lifecycle}",
             androidx_navigation_fragment          : "androidx.navigation:navigation-fragment-ktx:${libraries_versions.androidx_navigation}",
             androidx_navigation_ui                : "androidx.navigation:navigation-ui-ktx:${libraries_versions.androidx_navigation}",
             androidx_paging                       : "androidx.paging:paging-runtime:${libraries_versions.androidx_paging}",
             androidx_paging_common                : "androidx.paging:paging-common:${libraries_versions.androidx_paging}",
             android_desugaring_tools              : "com.android.tools:desugar_jdk_libs:${libraries_versions.android_desugaring_tools}",
+            androidx_swiperefresh_layout          : "androidx.swiperefreshlayout:swiperefreshlayout:${libraries_versions.androidx_swiperefresh_layout}",
 
 
             //Square
@@ -75,6 +79,8 @@ ext {
             chucker                               : "com.github.chuckerteam.chucker:library:${libraries_versions.chucker}",
             chucker_no_op                         : "com.github.chuckerteam.chucker:library-no-op:${libraries_versions.chucker}",
             gson                                  : "com.google.code.gson:gson:${libraries_versions.gson}",
+            glide                                 : "com.github.bumptech.glide:glide:${libraries_versions.glide}",
+
 
             // Dagger
             dagger                                : "com.google.dagger:dagger:${libraries_versions.dagger}",

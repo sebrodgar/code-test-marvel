@@ -3,6 +3,7 @@ package com.srg.pruebamarvel.data.features.characters.sources
 import com.srg.pruebamarvel.common.errors.toDomain
 import com.srg.pruebamarvel.data.MarvelApiService
 import com.srg.pruebamarvel.data.features.characters.models.CharacterApiModel
+import com.srg.pruebamarvel.data.features.characters.models.CharactersPageApiModel
 import javax.inject.Inject
 
 /**
@@ -12,9 +13,9 @@ class CharactersRemoteDataSourceImpl @Inject constructor(
     private val marvelApiService: MarvelApiService
 ) : CharactersDataSource {
 
-    override suspend fun getCharacters(limit: Int, offset: Int): List<CharacterApiModel> =
+    override suspend fun getCharacters(limit: Int, offset: Int): CharactersPageApiModel =
         try {
-            marvelApiService.getCharacters(limit, offset).data.results
+            marvelApiService.getCharacters(limit, offset).data
         } catch (e: Throwable) {
             throw e.toDomain()
         }

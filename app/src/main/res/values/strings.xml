@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">PruebaMarvel</string>
+    <string name="error_dialog_title">Error</string>
+
+    <string name="error_dialog_character_not_found">Character not found</string>
+    <string name="error_dialog_limit_greater_100">Limit greater than 100</string>
+    <string name="error_dialog_limit_invalid_below_1">Limit invalid or below 1</string>
+    <string name="error_dialog_empty_parameter">Empty parameter</string>
+    <string name="error_dialog_invalid_unrecognized">Invalid or unrecognized ordering parameter</string>
+    <string name="error_dialog_missing_api_key">Missing API Key</string>
+    <string name="error_dialog_missing_hash">Missing Hash</string>
+    <string name="error_dialog_missing_timestamp">Missing Timestamp</string>
+    <string name="error_dialog_method_not_allowed">Method Not Allowed</string>
+    <string name="error_dialog_invalid_referer">Invalid Referer</string>
+    <string name="error_dialog_forbidden">Forbidden</string>
+    <string name="error_dialog_unknow">unknown</string>
+
+
 </resources>

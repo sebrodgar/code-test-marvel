@@ -1,4 +1,4 @@
-package com.srg.pruebamarvel.presentation.features.main
+package com.srg.pruebamarvel.presentation.features.characters.list
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -13,16 +13,16 @@ import kotlin.contracts.ExperimentalContracts
  * Created by sebrodgar on 28/02/2021.
  */
 @Module
-abstract class MainFragmentBuilder {
+abstract class CharacterListFragmentBuilder {
 
     @Binds
     @IntoMap
-    @FragmentKey(MainFragment::class)
+    @FragmentKey(CharacterListFragment::class)
     @ExperimentalContracts
-    abstract fun bindMainFragment(fragment: MainFragment): Fragment
+    abstract fun bindCharacterListFragment(fragment: CharacterListFragment): Fragment
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+    @ViewModelKey(CharacterListViewModel::class)
+    abstract fun bindCharacterListViewModel(viewModel: CharacterListViewModel): ViewModel
 }
