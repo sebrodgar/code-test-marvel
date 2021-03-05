@@ -1,15 +1,17 @@
 package com.srg.pruebamarvel.presentation.features.characters.list
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.navigation.fragment.findNavController
 import com.srg.pruebamarvel.R
 import com.srg.pruebamarvel.common.base.BaseFragment
 import com.srg.pruebamarvel.common.di.injections.ViewModelInjectionFactory
 import com.srg.pruebamarvel.common.util.StateData
 import com.srg.pruebamarvel.databinding.FragmentCharacterListBinding
-import com.srg.pruebamarvel.presentation.common.errors.DialogErrorViewEntity
+import com.srg.pruebamarvel.presentation.common.extensions.setUpToolbar
+import com.srg.pruebamarvel.presentation.common.extensions.showError
 import com.srg.pruebamarvel.presentation.common.listeners.OnBottomReachedListener
 import com.srg.pruebamarvel.presentation.common.listeners.OnItemClickListener
 import com.srg.pruebamarvel.presentation.common.viewBinding
@@ -30,9 +32,15 @@ class CharacterListFragment @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initObservers(view)
+        initUi(view.context)
+        initObservers(view.context)
         setListeners()
         getCharacters()
+    }
+
+    private fun initUi(context: Context) {
+        setUpToolbar(binding.toolbar)
+        binding.toolbar.title = context.getString(R.string.characters_list_title_screen)
     }
 
     override fun onStart() {
@@ -49,7 +57,7 @@ class CharacterListFragment @Inject constructor(
 
     private fun getCharacters() = viewModel.getCharacters()
 
-    private fun initObservers(view: View) {
+    private fun initObservers(context: Context) {
         viewModel.characters.observe(viewLifecycleOwner, {
             when (it) {
                 is StateData.Loading -> binding.srlCharacters.isRefreshing = true
@@ -58,7 +66,7 @@ class CharacterListFragment @Inject constructor(
                     binding.srlCharacters.isRefreshing = false
                 }
                 is StateData.Error -> {
-                    showError(view, it.error) {
+                    showError(context, it.error) {
                         getCharacters()
                     }
 
@@ -67,23 +75,12 @@ class CharacterListFragment @Inject constructor(
         })
     }
 
-    private fun showError(
-        view: View,
-        dialogErrorViewEntity: DialogErrorViewEntity,
-        onPositiveButtonPressed: () -> Unit = {}
-    ) =
-        MaterialAlertDialogBuilder(view.context)
-            .setCancelable(false)
-            .setTitle(dialogErrorViewEntity.dialogTitle)
-            .setMessage(dialogErrorViewEntity.dialogMessage)
-            .setPositiveButton(dialogErrorViewEntity.positiveButton) { _, _ ->
-                onPositiveButtonPressed()
-            }
-            .show()
-
-    override fun onItemClick(t: CharacterItemUiModel) {
-
-    }
+    override fun onItemClick(character: CharacterItemUiModel) =
+        findNavController().navigate(
+            CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailsFragment(
+                character.id, character.name
+            )
+        )
 
     override fun onBottomReached(position: Int) = getCharacters()
 

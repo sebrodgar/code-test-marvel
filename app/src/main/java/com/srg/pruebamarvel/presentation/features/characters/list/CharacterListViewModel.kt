@@ -10,8 +10,8 @@ import com.srg.pruebamarvel.domain.features.characters.GetCharacterListUseCase
 import com.srg.pruebamarvel.presentation.common.errors.DialogErrorViewEntity
 import com.srg.pruebamarvel.presentation.common.flow.collect
 import com.srg.pruebamarvel.presentation.common.flow.lceFlow
-import com.srg.pruebamarvel.presentation.features.characters.list.mappers.toUi
 import com.srg.pruebamarvel.presentation.features.characters.list.models.CharacterItemUiModel
+import com.srg.pruebamarvel.presentation.features.characters.mappers.toItemUi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
@@ -35,7 +35,7 @@ class CharacterListViewModel @Inject constructor(
                 .lceFlow()
                 .collect(
                     onContent = {
-                        _characters.onContent(it.map { item -> item.toUi() })
+                        _characters.onContent(it.map { item -> item.toItemUi() })
                     },
                     onError = {
                         when ((it as? NetworkException)?.marvelCode) {
