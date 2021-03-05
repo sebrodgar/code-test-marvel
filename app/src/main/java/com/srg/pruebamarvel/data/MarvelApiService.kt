@@ -11,13 +11,13 @@ import retrofit2.http.Query
 interface MarvelApiService {
 
     @GET("/v1/public/characters")
-    fun getCharacters(
+    suspend fun getCharacters(
         @Query("limit") limit: Int,
         @Query("offset") offset: Int
     ): MarvelResponseApiModel
 
     @GET("/v1/public/characters/{characterId}")
-    fun getCharacterItem(
+    suspend fun getCharacterItem(
         @Path("characterId") characterId: Long
     ): MarvelResponseApiModel
 }
