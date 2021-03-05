@@ -15,5 +15,9 @@
     <string name="error_dialog_forbidden">Forbidden</string>
     <string name="error_dialog_unknow">unknown</string>
 
+    <string name="character_details_modified_data">Modified on %1$s</string>
+
+    <string name="characters_list_title_screen">Characters</string>
+
 
 </resources>
