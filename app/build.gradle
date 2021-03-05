@@ -91,4 +91,9 @@ dependencies {
     testImplementation libraries.mockito_kotlin
     androidTestImplementation libraries.androidx_test_junit_ext
     androidTestImplementation libraries.androidx_espresso_core
+    testImplementation libraries.coroutines_test
+    testImplementation libraries.androidx_test_arch_core
+    testImplementation libraries.mockito_inline
+
+
 }

@@ -2,10 +2,7 @@ package com.srg.pruebamarvel.common.di
 
 import com.srg.pruebamarvel.common.MarvelApplication
 import com.srg.pruebamarvel.common.di.annotations.AppScope
-import com.srg.pruebamarvel.common.di.modules.AppModule
-import com.srg.pruebamarvel.common.di.modules.DataProvidersModule
-import com.srg.pruebamarvel.common.di.modules.RemoteModule
-import com.srg.pruebamarvel.common.di.modules.RepositoriesModule
+import com.srg.pruebamarvel.common.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -19,6 +16,7 @@ import dagger.android.support.AndroidSupportInjectionModule
     modules = [
         AppModule::class,
         DataProvidersModule::class,
+        DataSourceModule::class,
         RemoteModule::class,
         AndroidSupportInjectionModule::class,
         PresentationModule::class,
