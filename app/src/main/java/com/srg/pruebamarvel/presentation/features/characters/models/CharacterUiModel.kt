@@ -9,11 +9,11 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class CharacterUiModel(
-    val id: Long,
-    val name: String,
-    val imageURL: String,
-    val description: String,
-    val modifiedData: String,
-    val resourceURI: String,
+    val id: Long?,
+    val name: String?,
+    val imageURL: String?,
+    val description: String?,
+    val modifiedData: String?,
+    val resourceURI: String?,
     val appearances: List<CharacterAppearanceItemUiModel>
 ) : Parcelable

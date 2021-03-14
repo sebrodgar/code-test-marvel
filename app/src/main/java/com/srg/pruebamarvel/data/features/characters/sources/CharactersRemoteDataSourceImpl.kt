@@ -13,16 +13,16 @@ class CharactersRemoteDataSourceImpl @Inject constructor(
     private val marvelApiService: MarvelApiService
 ) : CharactersDataSource {
 
-    override suspend fun getCharacters(limit: Int, offset: Int): CharactersPageApiModel =
+    override suspend fun getCharacters(limit: Int, offset: Int): CharactersPageApiModel? =
         try {
             marvelApiService.getCharacters(limit, offset).data
         } catch (e: Throwable) {
             throw e.toDomain()
         }
 
-    override suspend fun getCharacterItem(characterId: Long): CharacterApiModel =
+    override suspend fun getCharacterItem(characterId: Long): CharacterApiModel? =
         try {
-            marvelApiService.getCharacterItem(characterId).data.results[0]
+            marvelApiService.getCharacterItem(characterId).data?.results?.get(0)
         } catch (e: Throwable) {
             throw e.toDomain()
         }

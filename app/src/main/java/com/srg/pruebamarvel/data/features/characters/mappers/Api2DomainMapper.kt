@@ -19,15 +19,10 @@ fun CharacterApiModel.toDomain(): CharacterDomainModel = CharacterDomainModel(
     name = name,
     description = description,
     modifiedData = modifiedData,
-    thumbnailPath = thumbnail.path,
-    thumbnailExtension = thumbnail.extension,
+    thumbnailPath = thumbnail?.path,
+    thumbnailExtension = thumbnail?.extension,
     resourceURI = resourceURI,
-    appearances = listOf(
-        series.toDomain(CharacterAppearanceType.SERIES),
-        stories.toDomain(CharacterAppearanceType.STORIES),
-        comics.toDomain(CharacterAppearanceType.COMICS),
-        events.toDomain(CharacterAppearanceType.EVENTS)
-    )
+    appearances = getAppearances(series, stories, comics, events)
 )
 
 fun CharactersPageApiModel.toDomain(): CharactersPageDomainModel = CharactersPageDomainModel(
@@ -35,7 +30,7 @@ fun CharactersPageApiModel.toDomain(): CharactersPageDomainModel = CharactersPag
     limit = limit,
     total = total,
     count = count,
-    results = results.map { it.toDomain() }
+    results = results?.map { it.toDomain() }
 )
 
 fun CharacterAppearanceItemApiModel.toDomain(characterAppearanceType: CharacterAppearanceType): CharacterAppearanceItemDomainModel =
@@ -51,6 +46,35 @@ fun CharacterAppearanceApiModel.toDomain(characterAppearanceType: CharacterAppea
         appearanceType = characterAppearanceType,
         available = available,
         collectionURI = collectionURI,
-        appearances = items.map { it.toDomain(characterAppearanceType) },
+        appearances = getAppearancesItem(items, characterAppearanceType),
         returned = returned
     )
+
+private fun getAppearances(
+    series: CharacterAppearanceApiModel?,
+    stories: CharacterAppearanceApiModel?,
+    comics: CharacterAppearanceApiModel?,
+    events: CharacterAppearanceApiModel?
+): List<CharacterAppearanceDomainModel> {
+    val appearances = emptyList<CharacterAppearanceDomainModel>().toMutableList()
+    series?.let { appearances.add(it.toDomain(CharacterAppearanceType.SERIES)) }
+    stories?.let { appearances.add(it.toDomain(CharacterAppearanceType.STORIES)) }
+    comics?.let { appearances.add(it.toDomain(CharacterAppearanceType.COMICS)) }
+    events?.let { appearances.add(it.toDomain(CharacterAppearanceType.EVENTS)) }
+    return appearances
+}
+
+private fun getAppearancesItem(
+    appearancesApi: List<CharacterAppearanceItemApiModel>?,
+    characterAppearanceType: CharacterAppearanceType
+): List<CharacterAppearanceItemDomainModel> {
+    val appearances = emptyList<CharacterAppearanceItemDomainModel>().toMutableList()
+    appearancesApi?.let {
+        appearances.addAll(it.map { appearanceItem ->
+            appearanceItem.toDomain(
+                characterAppearanceType
+            )
+        })
+    }
+    return appearances
+}

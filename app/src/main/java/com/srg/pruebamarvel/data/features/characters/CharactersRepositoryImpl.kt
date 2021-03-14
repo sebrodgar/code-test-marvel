@@ -14,9 +14,9 @@ class CharactersRepositoryImpl @Inject constructor(
     private val remote: CharactersDataSource
 ) : CharactersRepository {
 
-    override suspend fun getCharacters(limit: Int, offset: Int): CharactersPageDomainModel =
-        remote.getCharacters(limit, offset).toDomain()
+    override suspend fun getCharacters(limit: Int, offset: Int): CharactersPageDomainModel? =
+        remote.getCharacters(limit, offset)?.toDomain()
 
-    override suspend fun getCharacterItem(characterId: Long): CharacterDomainModel =
-        remote.getCharacterItem(characterId).toDomain()
+    override suspend fun getCharacterItem(characterId: Long): CharacterDomainModel? =
+        remote.getCharacterItem(characterId)?.toDomain()
 }

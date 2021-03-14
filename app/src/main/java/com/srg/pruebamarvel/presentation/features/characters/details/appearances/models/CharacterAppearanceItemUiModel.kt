@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class CharacterAppearanceItemUiModel(
     val appearanceType: CharacterAppearanceType,
-    val resourceURI: String,
-    val name: String,
+    val resourceURI: String?,
+    val name: String?,
     val type: String?
 ) : Parcelable
