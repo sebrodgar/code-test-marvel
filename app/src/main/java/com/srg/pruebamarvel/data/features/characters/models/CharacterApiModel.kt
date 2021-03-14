@@ -13,5 +13,9 @@ data class CharacterApiModel(
     @SerializedName("modified")
     val modifiedData: LocalDateTime,
     val thumbnail: ThumbnailApiModel,
-    val resourceURI: String
+    val resourceURI: String,
+    val series: CharacterAppearanceApiModel,
+    val stories: CharacterAppearanceApiModel,
+    val comics: CharacterAppearanceApiModel,
+    val events: CharacterAppearanceApiModel
 )

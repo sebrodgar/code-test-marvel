@@ -10,8 +10,8 @@ import com.srg.pruebamarvel.domain.features.characters.GetCharacterUseCase
 import com.srg.pruebamarvel.presentation.common.errors.DialogErrorViewEntity
 import com.srg.pruebamarvel.presentation.common.flow.collect
 import com.srg.pruebamarvel.presentation.common.flow.lceFlow
-import com.srg.pruebamarvel.presentation.features.characters.details.models.CharacterUiModel
 import com.srg.pruebamarvel.presentation.features.characters.mappers.toUi
+import com.srg.pruebamarvel.presentation.features.characters.models.CharacterUiModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow

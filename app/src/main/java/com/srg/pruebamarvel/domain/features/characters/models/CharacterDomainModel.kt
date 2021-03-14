@@ -12,5 +12,6 @@ data class CharacterDomainModel(
     val modifiedData: LocalDateTime,
     val thumbnailPath: String,
     val thumbnailExtension: String,
-    val resourceURI: String
+    val resourceURI: String,
+    val appearances: List<CharacterAppearanceDomainModel>
 )
