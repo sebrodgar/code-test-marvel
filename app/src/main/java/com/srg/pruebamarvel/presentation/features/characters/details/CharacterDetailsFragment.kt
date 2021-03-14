@@ -35,7 +35,6 @@ class CharacterDetailsFragment @Inject constructor(
         super.onViewCreated(view, savedInstanceState)
         initUi(view.context)
         initObservers(view.context)
-        viewModel.getCharacter(args.character.id)
         getCharacter()
         setListeners()
     }
@@ -68,7 +67,7 @@ class CharacterDetailsFragment @Inject constructor(
     }
 
     private fun getCharacter() {
-        viewModel.getCharacter(args.character.id)
+        args.character.id?.let { viewModel.getCharacter(it) }
     }
 
     private fun updateUi(context: Context, characterUiModel: CharacterUiModel) {

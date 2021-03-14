@@ -7,8 +7,8 @@ import com.srg.pruebamarvel.presentation.features.characters.details.appearances
  */
 data class CharacterAppearanceItemDomainModel(
     val appearanceType: CharacterAppearanceType,
-    val resourceURI: String,
-    val name: String,
+    val resourceURI: String?,
+    val name: String?,
     val type: String?
 ) {
 

@@ -16,13 +16,17 @@ fun CharacterDomainModel.toUi() = CharacterUiModel(
     name = name,
     imageURL = "$thumbnailPath/landscape_xlarge.$thumbnailExtension",
     description = description,
-    modifiedData = modifiedData.marvelFormat(),
+    modifiedData = modifiedData?.marvelFormat(),
     resourceURI = resourceURI,
     appearances = appearances.toUi()
 )
 
 fun List<CharacterAppearanceDomainModel>.toUi(): List<CharacterAppearanceItemUiModel> =
-    flatMap { it.appearances.map { appearanceItem -> appearanceItem.toUi() } }
+    flatMap {
+        it.appearances.map { appearanceItem ->
+            appearanceItem.toUi()
+        }
+    }
 
 
 fun CharacterAppearanceItemDomainModel.toUi() = CharacterAppearanceItemUiModel(
