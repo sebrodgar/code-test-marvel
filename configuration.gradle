@@ -1,8 +1,8 @@
 ext {
     //App version
     version_major = 1
-    version_minor = 0
-    version_patch = 2
+    version_minor = 1
+    version_patch = 0
     //@version_build only modify the version code, no the version name
     //It is use for release candidate updates in release branch
     version_build = 0
