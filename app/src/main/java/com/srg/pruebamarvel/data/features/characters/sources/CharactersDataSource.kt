@@ -7,6 +7,6 @@ import com.srg.pruebamarvel.data.features.characters.models.CharactersPageApiMod
  * Created by sebrodgar on 01/03/2021.
  */
 interface CharactersDataSource {
-    suspend fun getCharacters(limit: Int, offset: Int): CharactersPageApiModel
-    suspend fun getCharacterItem(characterId: Long): CharacterApiModel
+    suspend fun getCharacters(limit: Int, offset: Int): CharactersPageApiModel?
+    suspend fun getCharacterItem(characterId: Long): CharacterApiModel?
 }

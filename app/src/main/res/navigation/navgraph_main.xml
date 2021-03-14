@@ -11,17 +11,24 @@
         tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/action_characterListFragment_to_characterDetailsFragment"
-            app:destination="@id/characterDetailsFragment"
-            app:popUpTo="@id/characterListFragment" />
+            app:destination="@id/characterDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/characterDetailsFragment"
         android:name="com.srg.pruebamarvel.presentation.features.characters.details.CharacterDetailsFragment">
         <argument
-            android:name="characterId"
-            app:argType="long" />
-        <argument
-            android:name="characterName"
-            app:argType="string" />
+            android:name="character"
+            app:argType="com.srg.pruebamarvel.presentation.features.characters.models.CharacterUiModel" />
+        <action
+            android:id="@+id/action_characterDetailsFragment_to_characterDetailsAppearanceDialogFragment"
+            app:destination="@id/characterDetailsAppearanceDialogFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/characterDetailsAppearanceDialogFragment"
+        android:name="com.srg.pruebamarvel.presentation.features.characters.details.appearances.CharacterDetailsAppearanceDialogFragment"
+        android:label="CharacterDetailsAppearanceDialogFragment">
+        <argument
+            android:name="character"
+            app:argType="com.srg.pruebamarvel.presentation.features.characters.models.CharacterUiModel" />
+    </dialog>
 </navigation>

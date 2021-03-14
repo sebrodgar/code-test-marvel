@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.srg.pruebamarvel.R
@@ -16,7 +17,7 @@ import com.srg.pruebamarvel.databinding.FragmentCharacterDetailsBinding
 import com.srg.pruebamarvel.presentation.common.extensions.setUpToolbar
 import com.srg.pruebamarvel.presentation.common.extensions.showError
 import com.srg.pruebamarvel.presentation.common.viewBinding
-import com.srg.pruebamarvel.presentation.features.characters.details.models.CharacterUiModel
+import com.srg.pruebamarvel.presentation.features.characters.models.CharacterUiModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
@@ -32,21 +33,27 @@ class CharacterDetailsFragment @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initUi()
+        initUi(view.context)
         initObservers(view.context)
-        viewModel.getCharacter(args.characterId)
         getCharacter()
+        setListeners()
     }
 
-    private fun initUi() {
+    private fun initUi(context: Context) {
         setUpToolbar(binding.toolbar)
-        binding.toolbar.title = args.characterName
+        binding.toolbar.title = args.character.name
+        updateUi(context, args.character)
+    }
+
+    private fun setListeners() {
+        binding.btShowAppearances.setOnClickListener {
+            navigateToCharacterAppearances()
+        }
     }
 
     private fun initObservers(context: Context) {
         viewModel.character.observe(viewLifecycleOwner, {
             when (it) {
-                is StateData.Loading -> binding.pbCharacterDetails.isVisible = it.loading
                 is StateData.Content -> {
                     updateUi(context, it.content)
                 }
@@ -60,7 +67,7 @@ class CharacterDetailsFragment @Inject constructor(
     }
 
     private fun getCharacter() {
-        viewModel.getCharacter(args.characterId)
+        args.character.id?.let { viewModel.getCharacter(it) }
     }
 
     private fun updateUi(context: Context, characterUiModel: CharacterUiModel) {
@@ -78,5 +85,13 @@ class CharacterDetailsFragment @Inject constructor(
         binding.tvCharacterModifiedDate.isInvisible = false
         binding.ivCharacterImage.isInvisible = false
         binding.pbCharacterDetails.isVisible = false
+    }
+
+    private fun navigateToCharacterAppearances() {
+        findNavController().navigate(
+            CharacterDetailsFragmentDirections.actionCharacterDetailsFragmentToCharacterDetailsAppearanceDialogFragment(
+                args.character
+            )
+        )
     }
 }

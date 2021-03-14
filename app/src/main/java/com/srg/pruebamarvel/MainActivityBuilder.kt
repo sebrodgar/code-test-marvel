@@ -2,6 +2,7 @@ package com.srg.pruebamarvel
 
 import androidx.appcompat.app.AppCompatActivity
 import com.srg.pruebamarvel.presentation.features.characters.details.CharacterDetailsFragmentBuilder
+import com.srg.pruebamarvel.presentation.features.characters.details.appearances.CharacterDetailsAppearanceDialogFragmentBuilder
 import com.srg.pruebamarvel.presentation.features.characters.list.CharacterListFragmentBuilder
 import dagger.Binds
 import dagger.Module
@@ -16,7 +17,8 @@ abstract class MainActivityBuilder {
         modules = [
             MainActivityModule::class,
             CharacterListFragmentBuilder::class,
-            CharacterDetailsFragmentBuilder::class
+            CharacterDetailsFragmentBuilder::class,
+            CharacterDetailsAppearanceDialogFragmentBuilder::class
         ]
     )
     abstract fun mainActivity(): MainActivity

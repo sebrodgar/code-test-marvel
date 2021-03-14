@@ -9,10 +9,10 @@ import javax.inject.Inject
  */
 class GetCharacterUseCase @Inject constructor(
     private val repository: CharactersRepository
-) : UseCase<GetCharacterUseCase.Params, CharacterDomainModel>() {
+) : UseCase<GetCharacterUseCase.Params, CharacterDomainModel?>() {
 
     data class Params(val characterId: Long)
 
-    override suspend fun buildResult(params: Params): CharacterDomainModel =
+    override suspend fun buildResult(params: Params): CharacterDomainModel? =
         repository.getCharacterItem(characterId = params.characterId)
 }

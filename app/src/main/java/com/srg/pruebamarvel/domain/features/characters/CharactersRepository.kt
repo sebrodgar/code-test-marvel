@@ -7,6 +7,6 @@ import com.srg.pruebamarvel.domain.features.characters.models.CharactersPageDoma
  * Created by sebrodgar on 01/03/2021.
  */
 interface CharactersRepository {
-    suspend fun getCharacters(limit: Int, offset: Int): CharactersPageDomainModel
-    suspend fun getCharacterItem(characterId: Long): CharacterDomainModel
+    suspend fun getCharacters(limit: Int, offset: Int): CharactersPageDomainModel?
+    suspend fun getCharacterItem(characterId: Long): CharacterDomainModel?
 }
